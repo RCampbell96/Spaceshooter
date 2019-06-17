@@ -1,5 +1,3 @@
-// let sprite;
-
 class spaceshoot extends Phaser.Scene {
     constructor(){
         super({key:"spaceshoot"});
@@ -11,22 +9,10 @@ class spaceshoot extends Phaser.Scene {
     }
 
     create() {
-
-        // var BetweenPoints = Phaser.Math.Angle.BetweenPoints;
-        // var SetToAngle = Phaser.Geom.Line.SetToAngle;
-        // var velocityFromRotation = this.physics.velocityFromRotation;
-
         this.image = this.add.image(362, 300, 'spacebackdrop')
         fighter = this.physics.add.sprite(355, 350, 'player')
 
         fighter.setCollideWorldBounds(true);
-
-        // var velocity = new Phaser.Math.Vector2();
-        // var line = new Phaser.Geom.Line();
-
-        // this.input.on('pointermove', function (pointer) {
-        //     var angle = BetweenPoints(sprite, pointer)
-        // }
          
         this.key_A = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
         this.key_D = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
@@ -44,7 +30,5 @@ class spaceshoot extends Phaser.Scene {
             fighter.y -= 6;
         if(this.key_S.isDown)
             fighter.y += 6;
-
-            // sprite.rotation = game.physics.arcade.angleToPointer(sprite);
     }
 }
