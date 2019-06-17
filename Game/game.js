@@ -6,11 +6,18 @@ let config = {
         default:'arcade',
         arcade: {
             gravity: { x: 0, y : 0},
+            checkCollision: {
+                up: true,
+                down: true,
+                left: true,
+                right: true
+            },
         }
     },
     scene: [spaceshoot],
     pixelArt: true,
     roundPixels: true
 };
+let fighter;
 
 let game = new Phaser.Game(config);

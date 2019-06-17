@@ -1,4 +1,4 @@
-let sprite;
+// let sprite;
 
 class spaceshoot extends Phaser.Scene {
     constructor(){
@@ -12,15 +12,17 @@ class spaceshoot extends Phaser.Scene {
 
     create() {
 
-        var BetweenPoints = Phaser.Math.Angle.BetweenPoints;
-        var SetToAngle = Phaser.Geom.Line.SetToAngle;
-        var velocityFromRotation = this.physics.velocityFromRotation;
+        // var BetweenPoints = Phaser.Math.Angle.BetweenPoints;
+        // var SetToAngle = Phaser.Geom.Line.SetToAngle;
+        // var velocityFromRotation = this.physics.velocityFromRotation;
 
         this.image = this.add.image(362, 300, 'spacebackdrop')
-        this.image = this.physics.add.sprite(355, 350, 'player')
+        fighter = this.physics.add.sprite(355, 350, 'player')
 
-        var velocity = new Phaser.Math.Vector2();
-        var line = new Phaser.Geom.Line();
+        fighter.setCollideWorldBounds(true);
+
+        // var velocity = new Phaser.Math.Vector2();
+        // var line = new Phaser.Geom.Line();
 
         // this.input.on('pointermove', function (pointer) {
         //     var angle = BetweenPoints(sprite, pointer)
@@ -35,14 +37,14 @@ class spaceshoot extends Phaser.Scene {
     }
     update() {
         if(this.key_A.isDown)
-            this.image.x -= 6;
+            fighter.x -= 6;
         if(this.key_D.isDown)
-            this.image.x += 6;
+            fighter.x += 6;
         if(this.key_W.isDown)
-            this.image.y -= 6;
+            fighter.y -= 6;
         if(this.key_S.isDown)
-            this.image.y += 6;
+            fighter.y += 6;
 
-            sprite.rotation = game.physics.arcade.angleToPointer(sprite);
+            // sprite.rotation = game.physics.arcade.angleToPointer(sprite);
     }
 }
