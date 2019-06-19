@@ -11,16 +11,41 @@ class spaceshoot extends Phaser.Scene {
     create() {
         this.image = this.add.image(362, 300, 'spacebackdrop')
         fighter = this.physics.add.sprite(355, 350, 'player')
+        this.input.on('pointermove', function (pointer) {
+
+            mouseX = pointer.x;
+            mouseY = pointer.y;
+        });
+        
+        var BetweenPoints = Phaser.Math.Angle.BetweenPoints;
+        var SetToAngle = Phaser.Geom.Line.SetToAngle;
+        var velocityFromRotation = this.physics.velocityFromRotation;
+        laser = this.physics.add.image(fighter, fighter, 'singlelaser');
+        var velocity = new Phaser.Math.Vector2();
+        var line = new Phaser.Geom.Line();
 
         fighter.setCollideWorldBounds(true);
-         
+
         this.key_A = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
         this.key_D = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
         this.key_W = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
         this.key_S = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
         
-        
+        this.input.on('pointermove', function (pointer) {
+            var angle = BetweenPoints(fighter, pointer);
+    
+            SetToAngle(line, fighter, fighter, angle, 360);
+            velocityFromRotation(angle, 1500, velocity);
+        }, this);
+
+        this.input.on('pointerdown', function () {
+            // Enable physics body and reset (at position), activate game object, show game object
+            laser.enableBody(true, fighter.x, fighter.y, true, true).setVelocity(velocity.x, velocity.y);
+        }, this);
+
+        // 
     }
+
     update() {
         if(this.key_A.isDown)
             fighter.x -= 6;
@@ -30,5 +55,7 @@ class spaceshoot extends Phaser.Scene {
             fighter.y -= 6;
         if(this.key_S.isDown)
             fighter.y += 6;
+
+            fighter.setRotation(Phaser.Math.Angle.Between(mouseX, mouseY, fighter.x, fighter.y) - Math.PI / 2);    
     }
 }

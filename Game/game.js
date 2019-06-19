@@ -19,5 +19,7 @@ let config = {
     roundPixels: true
 };
 let fighter;
-
+let laser;
+let mouseX;
+let mouseY;
 let game = new Phaser.Game(config);
