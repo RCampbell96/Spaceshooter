@@ -20,6 +20,6 @@ let config = {
 };
 let fighter;
 let laser;
-let mouseX = 0 ;
+let mouseX = 0;
 let mouseY = 0;
 let game = new Phaser.Game(config);
