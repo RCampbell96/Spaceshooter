@@ -23,12 +23,6 @@ class spaceshoot extends Phaser.Scene {
         laser = this.physics.add.image(fighter, fighter, 'bullet');
         enemy1 = this.add.group({key: 'enemy1', frame: 0, repeat: 13, setXY: { x: 32, y: 100, stepX: 40 } });
         
-        this.input.on('pointermove', function (pointer) {
-
-            mouseX = pointer.x;
-            mouseY = pointer.y;
-        });
-        
         fighter.setCollideWorldBounds(true);
         
         this.input.on('pointermove', function (pointer) {
