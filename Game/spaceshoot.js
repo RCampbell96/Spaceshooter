@@ -5,8 +5,8 @@ class spaceshoot extends Phaser.Scene {
     preload() {
         this.load.image('spacebackdrop','spacebackdrop.png')
         this.load.image('player','fighter.png')
-        this.load.image('bullet', 'bullet.png')
-        this.load.image('enemy', 'enemy1.png')
+        this.load.image('bullet', 'bullet.png') // Attribute: http://bonsaiheld.org
+        this.load.image('enemy1', 'enemy1.png')
     }
 
     create() {
@@ -16,11 +16,12 @@ class spaceshoot extends Phaser.Scene {
         let velocityFromRotation = this.physics.velocityFromRotation;
         let velocity = new Phaser.Math.Vector2();
         let line = new Phaser.Geom.Line();
+        
 
         this.image = this.add.image(362, 300, 'spacebackdrop')
         fighter = this.physics.add.sprite(355, 350, 'player')
         laser = this.physics.add.image(fighter, fighter, 'bullet');
-
+        enemy1 = this.add.group({key: 'enemy1', frame: 0, repeat: 13, setXY: { x: 32, y: 100, stepX: 40 } });
         
         this.input.on('pointermove', function (pointer) {
 
@@ -49,6 +50,8 @@ class spaceshoot extends Phaser.Scene {
         this.key_D = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
         this.key_W = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
         this.key_S = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
+
+        Phaser.Actions.IncX(enemy1.getChildren(), 100);
     }
 
     update() {

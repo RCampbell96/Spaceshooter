@@ -2,6 +2,7 @@ let config = {
     type: Phaser.AUTO,
     width:720,
     height:600,
+    parent: 'spaceshoot',
     physics: {
         default:'arcade',
         arcade: {
@@ -23,7 +24,6 @@ let fighter;
 let laser;
 let mouseX = 0;
 let mouseY = 0;
-let spawnAllowed = true;
-let enemyGroup;
+let enemy1;
 
 let game = new Phaser.Game(config);
