@@ -5,7 +5,8 @@ class spaceshoot extends Phaser.Scene {
     preload() {
         this.load.image('spacebackdrop','spacebackdrop.png')
         this.load.image('player','fighter.png')
-        this.load.image('singlelaser', 'singlelaser.jpeg')
+        this.load.image('bullet', 'bullet.png')
+        this.load.image('enemy', 'enemy1.png')
     }
 
     create() {
@@ -18,7 +19,8 @@ class spaceshoot extends Phaser.Scene {
 
         this.image = this.add.image(362, 300, 'spacebackdrop')
         fighter = this.physics.add.sprite(355, 350, 'player')
-        laser = this.physics.add.image(fighter, fighter, 'singlelaser');
+        laser = this.physics.add.image(fighter, fighter, 'bullet');
+
         
         this.input.on('pointermove', function (pointer) {
 
