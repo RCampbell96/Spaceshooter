@@ -15,5 +15,9 @@
   },
   "devDependencies": {
     "nodemon": "^1.19.1"
+  },
+  "respository": {
+    "type": "git",
+    "url": "https://github.com/RCampbell96/Spaceshooter.git"
   }
 }
